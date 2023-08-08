@@ -1,6 +1,7 @@
 // console.log("Hello World!");
-
-let playerChoice = prompt("Rock, Paper, or Scissors?");
+let computerWins = 0;
+let playerWins = 0;
+// let playerChoice = prompt("R P S?");
 
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -20,7 +21,7 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function startGame(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     return "It's a Tie! Both players chose " + playerSelection;
   } else if (
@@ -28,10 +29,28 @@ function startGame(playerSelection, computerSelection) {
     (playerSelection == "paper" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "rock")
   ) {
+    computerWins++;
     return "You lose! " + computerSelection + " beats " + playerSelection;
   } else {
-    return "You win! " + playerChoice + " beats " + computerSelection;
+    playerWins++;
+    return "You win! " + playerSelection + " beats " + computerSelection;
   }
 }
 
-console.log(startGame(playerChoice, getComputerChoice()));
+function game() {
+  if (playerWins < 5 || computerWins < 5) {
+    playerChoice = prompt("R P S?");
+    console.log(
+      playRound(playerChoice, getComputerChoice()) +
+        " Player wins: " +
+        playerWins +
+        " Computer wins: " +
+        computerWins
+    );
+  }
+}
+
+// debugger;
+
+console.log("Hello world!");
+game();
