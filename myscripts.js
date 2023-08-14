@@ -1,7 +1,14 @@
 // console.log("Hello World!");
 let computerWins = 0;
 let playerWins = 0;
+const btnRock = document.getElementById("Rock");
+const btnPaper = document.getElementById("Paper");
+const btnScissors = document.getElementById("Scissors");
 // let playerChoice = prompt("R P S?");
+
+btnRock.addEventListener("click", function (e) {
+  console.log(e);
+});
 
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -39,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   if (playerWins < 5 || computerWins < 5) {
-    playerChoice = prompt("R P S?");
+    //  playerChoice = prompt("R P S?");
     console.log(
       playRound(playerChoice, getComputerChoice()) +
         " Player wins: " +
